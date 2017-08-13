@@ -1,33 +1,51 @@
-﻿
-namespace c17_Ex01_1
+﻿namespace c17_Ex01_4
 {
     class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            System.Console.WriteLine("Please enter 4 numbers with 4 digits:");
-            string[] userInputs = { "", "", "", "" };
-            for(int i=0; i < 4; i++)
+            //checks if it's a palindrom
+            System.Console.WriteLine("Please enter a string with 10 digits");
+            string input = "";
+
+            do // a loop until the user gives a valid string
             {
                 try
                 {
-                    userInputs[i] = System.Console.ReadLine();
-                    if (userInputs[i].Length != 4)
+                    input = System.Console.ReadLine();
+                    if (input.Length != 10 || !StringStats.isValidInput(input))
                     {
-                        i--;
-                        throw new System.Exception("");
+                        throw new System.Exception("The input is not valid");
                     }
-                }catch(System.Exception ex)
-                {
-                    System.Console.WriteLine("We accept only numbers with four digits");
                 }
+                catch (System.Exception ex)
+                {
+                    System.Console.WriteLine(ex.Message);
+                }
+            } while (input.Length != 10||!StringStats.isValidInput(input));
+
+            if (StringStats.isPalindrom(input)) //checks if the string is a palindrom
+            {
+                System.Console.WriteLine("The string is a palindrom");
+            }
+            else
+            {
+                System.Console.WriteLine("The string isn't a palindrom");
             }
 
-            string[] bins = NumberAnalyzer.convertToBin(userInputs);
-            foreach(string str in bins)
+            long num = 0;
+            if (long.TryParse(input,out num))
             {
-                System.Console.Write("{0} , ",str);
+                System.Console.WriteLine("The mean is {0}",StringStats.digitsMean(num));
             }
+            else
+            {
+                System.Console.WriteLine("The number of uppercase letters is {0}",StringStats.numOfUpperCase(input));
+            }
+               
+            
+
+            //keeps the console open until the user presses a key
             System.Console.ReadLine();
         }
     }
