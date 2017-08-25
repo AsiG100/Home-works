@@ -32,7 +32,7 @@ namespace C17_Ex02_Zamir_305701799_Asaf_305708356
                     Console.Clear();
                     
                     ///single player or multi player
-                    Console.WriteLine("Would you like to play against another player (s) or against the computer (m)?");
+                    Console.WriteLine("Would you like to play against another player (m) or against the computer (s)?");
                     string userDecision = Console.ReadLine();
                     if (userDecision == "s")
                     {
@@ -57,7 +57,7 @@ namespace C17_Ex02_Zamir_305701799_Asaf_305708356
                 }
 
 
-                Console.Read();
+                Console.ReadKey();
                 Console.Clear();
             } while(loopRunner);
         }
